@@ -13,13 +13,13 @@ class App extends Component {
               <Link to="/radio/">Radio</Link>
             </li>
             <li>
-              <Link to="/video/">Video</Link>
+              <Link to="/tv/">TV</Link>
             </li>
           </ul>
         </nav>
 
         <Route path="/radio/" exact component={RadioPlayer} />
-        <Route path="/video/" component={VideoPlayer} />
+        <Route path="/tv/" exact component={VideoPlayer} />
       </BrowserRouter>
     );
   }

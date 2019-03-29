@@ -6,7 +6,7 @@ export const RadioPlayer = () => {
 
   useEffect(() => {
     async function fetchStations() {
-      const result = await axios.get<any>('/play/stations');
+      const result = await axios.get<any>('/api/stations');
       const stations = (result.data.stations as any[]) || [];
       setStations(stations);
     }
