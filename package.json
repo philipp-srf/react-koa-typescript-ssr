@@ -8,10 +8,13 @@
     "@types/node": "11.12.1",
     "@types/react": "16.8.10",
     "@types/react-dom": "16.8.3",
+    "axios": "^0.18.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-		"typescript": "3.3.4000"
+    "typescript": "3.3.4000"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,6 +32,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/react-router": "^4.4.5",
+    "@types/react-router-dom": "^4.3.1",
     "prettier": "1.16.4"
   }
 }
