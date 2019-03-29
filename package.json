@@ -1,0 +1,8 @@
+{
+  "name": "react-koa-typescript-ssr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/philipp-srf/react-koa-typescript-ssr",
+  "author": "Philipp Denzler <philipp.denzler@srf.ch>",
+  "license": "MIT"
+}
