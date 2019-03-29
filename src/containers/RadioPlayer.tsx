@@ -6,9 +6,7 @@ export const RadioPlayer = () => {
 
   useEffect(() => {
     async function fetchStations() {
-      const result = await axios.get<any>(
-        'https://www.srf.ch/play/radio/livepopup/stations'
-      );
+      const result = await axios.get<any>('/play/stations');
       const stations = (result.data.stations as any[]) || [];
       setStations(stations);
     }
