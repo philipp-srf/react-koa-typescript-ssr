@@ -1,8 +1,11 @@
 import axios from 'axios';
-import React, { Fragment, useEffect, useState } from 'react';
+import * as React from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
+import { AppContext } from '../AppContext';
 
 export const VideoPlayer = () => {
-  const [media, setMedia] = useState<any>({});
+  const appContext = useContext(AppContext);
+  const [media, setMedia] = useState<any>(appContext.initialData || {});
 
   useEffect(() => {
     fetchMedia().then(media => setMedia(media));

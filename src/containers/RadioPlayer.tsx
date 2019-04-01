@@ -1,8 +1,11 @@
 import axios from 'axios';
-import React, { Fragment, useEffect, useState } from 'react';
+import * as React from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
+import { AppContext } from '../AppContext';
 
 export const RadioPlayer = () => {
-  const [stations, setStations] = useState<any[]>([]);
+  const appContext = useContext(AppContext);
+  const [stations, setStations] = useState<any[]>(appContext.initialData || []);
 
   useEffect(() => {
     fetchStations().then(stations => setStations(stations));

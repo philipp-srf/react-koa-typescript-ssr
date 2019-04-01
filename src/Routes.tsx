@@ -1,5 +1,5 @@
-import { RadioPlayer, fetchStations } from './containers/RadioPlayer';
-import { VideoPlayer, fetchMedia } from './containers/VideoPlayer';
+import { fetchStations, RadioPlayer } from './containers/RadioPlayer';
+import { fetchMedia, VideoPlayer } from './containers/VideoPlayer';
 
 type AppRoute = {
   path: string;

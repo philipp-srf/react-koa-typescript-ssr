@@ -3,9 +3,10 @@ import * as Koa from 'koa';
 import * as Router from 'koa-router';
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
+import { matchPath } from 'react-router-dom';
+import { AppContext } from '../src/AppContext';
 import { DemoComponent } from '../src/DemoComponent';
 import { routes } from '../src/Routes';
-import { matchPath } from 'react-router-dom';
 
 const app: Koa = new Koa();
 const router = new Router();
@@ -47,8 +48,13 @@ router.get('*', async (ctx: Koa.Context, next) => {
     // load the data for the route
     const data = await route.loadData();
 
-    ctx.body = data;
+    ctx.body = ReactDOMServer.renderToString(
+      <AppContext.Provider value={{ initialData: data }}>
+        {React.createElement(route.component)}
+      </AppContext.Provider>
+    );
   } else {
+    ctx.status = 404;
     ctx.body = 'NOT FOUND';
   }
 });
