@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as Koa from 'koa';
 import * as Router from 'koa-router';
+import * as serve from 'koa-static';
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { matchPath } from 'react-router-dom';
@@ -61,6 +62,7 @@ router.get('*', async (ctx: Koa.Context, next) => {
 
 app.on('error', console.error);
 
+app.use(serve('../build'));
 app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(3000);
