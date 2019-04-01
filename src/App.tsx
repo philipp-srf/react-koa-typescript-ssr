@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import { RadioPlayer } from './containers/RadioPlayer';
 import { VideoPlayer } from './containers/VideoPlayer';
+import { routes } from './Routes';
 
 class App extends Component {
   render() {
@@ -18,8 +19,11 @@ class App extends Component {
           </ul>
         </nav>
 
-        <Route path="/radio/" exact component={RadioPlayer} />
-        <Route path="/tv/" exact component={VideoPlayer} />
+        <Switch>
+          {routes.map(route => (
+            <Route key={route.path} {...route} />
+          ))}
+        </Switch>
       </BrowserRouter>
     );
   }

@@ -5,14 +5,7 @@ export const VideoPlayer = () => {
   const [media, setMedia] = useState<any>({});
 
   useEffect(() => {
-    async function fetchStations() {
-      const result = await axios.get<any>(
-        'http://il.srf.ch/integrationlayer/2.0/srf/mediaComposition/video/6dfeb34c-43ae-4baf-94da-6069fdf1d507.json'
-      );
-      setMedia(result.data || {});
-    }
-
-    fetchStations();
+    fetchMedia().then(media => setMedia(media));
   }, []);
 
   return (
@@ -34,3 +27,9 @@ export const VideoPlayer = () => {
     </Fragment>
   );
 };
+
+export async function fetchMedia() {
+  const result = await axios.get<any>('/api/video');
+
+  return result.data || {};
+}

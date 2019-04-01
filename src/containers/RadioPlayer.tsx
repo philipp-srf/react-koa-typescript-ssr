@@ -5,13 +5,7 @@ export const RadioPlayer = () => {
   const [stations, setStations] = useState<any[]>([]);
 
   useEffect(() => {
-    async function fetchStations() {
-      const result = await axios.get<any>('/api/stations');
-      const stations = (result.data.stations as any[]) || [];
-      setStations(stations);
-    }
-
-    fetchStations();
+    fetchStations().then(stations => setStations(stations));
   }, []);
 
   const playerUrl = `https://player.srf.ch/p/srf/popup?urn=${
@@ -41,3 +35,8 @@ export const RadioPlayer = () => {
     </Fragment>
   );
 };
+
+export async function fetchStations() {
+  const result = await axios.get<any>('/api/stations');
+  return (result.data.stations as any[]) || [];
+}
