@@ -5,10 +5,12 @@ import { AppContext } from '../AppContext';
 
 export const VideoPlayer = () => {
   const appContext = useContext(AppContext);
-  const [media, setMedia] = useState<any>(appContext.initialData || {});
+  const [media, setMedia] = useState<any>(appContext.getInitialData() || {});
 
   useEffect(() => {
-    fetchMedia().then(media => setMedia(media));
+    if (!media.episode) {
+      fetchMedia().then(media => setMedia(media));
+    }
   }, []);
 
   return (

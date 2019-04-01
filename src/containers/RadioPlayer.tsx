@@ -5,10 +5,14 @@ import { AppContext } from '../AppContext';
 
 export const RadioPlayer = () => {
   const appContext = useContext(AppContext);
-  const [stations, setStations] = useState<any[]>(appContext.initialData || []);
+  const [stations, setStations] = useState<any[]>(
+    appContext.getInitialData() || []
+  );
 
   useEffect(() => {
-    fetchStations().then(stations => setStations(stations));
+    if (stations.length === 0) {
+      fetchStations().then(stations => setStations(stations));
+    }
   }, []);
 
   const playerUrl = `https://player.srf.ch/p/srf/popup?urn=${
